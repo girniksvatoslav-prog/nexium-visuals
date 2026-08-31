@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXIUM Visuals</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at 50% -10%, #155cff55, transparent 35%),
+        radial-gradient(circle at 0% 50%, #0066ff22, transparent 30%),
+        #030611;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#ffffff05 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* HEADER */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #030611cc;
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #2477ff33;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #3185ff;
+    text-shadow: 0 0 20px #1870ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #8d9bbb;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #4d91ff;
+    text-shadow: 0 0 15px #1671ff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    padding: 150px 20px 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.badge {
+    padding: 9px 18px;
+    border-radius: 50px;
+
+    color: #62a0ff;
+    background: #1260ff12;
+    border: 1px solid #2779ff55;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    box-shadow: 0 0 30px #0066ff15;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero h1 {
+    margin-top: 28px;
+
+    font-size: clamp(65px, 13vw, 150px);
+    line-height: .8;
+
+    font-weight: 1000;
+    letter-spacing: -8px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #4b91ff,
+        #00aaff,
+        #ffffff
+    );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: gradient 5s infinite linear;
+
+    filter: drop-shadow(0 0 30px #1474ff44);
+}
+
+.hero h2 {
+    margin-top: 25px;
+    color: #64718e;
+    font-size: 17px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero p {
+    max-width: 650px;
+    margin-top: 25px;
+
+    color: #8995b1;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.buttons {
+    margin-top: 35px;
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 28px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.primary {
+    color: white;
+    background: linear-gradient(135deg, #2477ff, #0051dd);
+
+    box-shadow:
+        0 0 30px #0066ff44,
+        inset 0 1px #ffffff44;
+}
+
+.primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 0 45px #1675ff88;
+}
+
+.secondary {
+    color: #a9b6d2;
+
+    background: #ffffff06;
+    border: 1px solid #ffffff14;
+}
+
+.secondary:hover {
+    color: white;
+    border-color: #2477ff77;
+    background: #2477ff12;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 110px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title .small {
+    color: #3987ff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-title h2 {
+    margin-top: 12px;
+    font-size: clamp(32px, 5vw, 52px);
+}
+
+.section-title p {
+    margin-top: 12px;
+    color: #737f9c;
+}
+
+/* CARDS */
+
+.cards {
+    max-width: 1150px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    position: relative;
+    min-height: 250px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg, #101a33dd, #050812ee);
+
+    border: 1px solid #315caa25;
+
+    overflow: hidden;
+
+    transition: .35s;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -70px;
+    top: -70px;
+
+    background: #1474ff;
+    filter: blur(75px);
+    opacity: .12;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: #3185ff66;
+
+    box-shadow:
+        0 20px 60px #00000066,
+        0 0 35px #0066ff12;
+}
+
+.icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #2477ff12;
+    border: 1px solid #2477ff30;
+
+    font-size: 25px;
+
+    margin-bottom: 25px;
+}
+
+.card h3 {
+    font-size: 20px;
+}
+
+.card p {
+    margin-top: 12px;
+
+    color: #77839f;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* STATS */
+
+.stats {
+    max-width: 1000px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    padding: 35px;
+    text-align: center;
+
+    border-radius: 18px;
+
+    background: #091127aa;
+    border: 1px solid #2477ff22;
+}
+
+.stat strong {
+    display: block;
+
+    font-size: 42px;
+    color: #4590ff;
+
+    text-shadow: 0 0 25px #1674ff66;
+}
+
+.stat span {
+    display: block;
+    margin-top: 8px;
+
+    color: #737f99;
+    font-size: 13px;
+}
+
+/* DOWNLOAD */
+
+.download-box {
+    max-width: 950px;
+    margin: auto;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        radial-gradient(circle at 50% 0%, #1674ff22, transparent 50%),
+        #071027cc;
+
+    border: 1px solid #3185ff33;
+
+    box-shadow:
+        0 30px 100px #00000066,
+        inset 0 1px #ffffff08;
+}
+
+.download-box h2 {
+    font-size: 42px;
+}
+
+.download-box p {
+    margin: 15px auto 30px;
+
+    max-width: 550px;
+
+    color: #7e8ba8;
+    line-height: 1.6;
+}
+
+/* FAQ */
+
+.faq {
+    max-width: 800px;
+    margin: auto;
+}
+
+details {
+    margin-bottom: 12px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background: #091127aa;
+    border: 1px solid #ffffff0c;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details p {
+    margin-top: 15px;
+
+    color: #7d89a5;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #ffffff0a;
+
+    color: #59657f;
+    font-size: 13px;
+}
+
+footer strong {
+    color: #3e8aff;
+}
+
+/* ANIMATIONS */
+
+@keyframes gradient {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -5px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .download-box {
+        padding: 50px 20px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        NEXIUM <span>VISUALS</span>
+    </div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#features">Features</a>
+        <a href="#download">Скачать</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="badge">
+        ⚡ NEXT GENERATION MINECRAFT VISUALS
+    </div>
+
+    <h1>NEXIUM</h1>
+
+    <h2>VISUALS</h2>
+
+    <p>
+        Новый уровень визуалов для Minecraft.
+        Минималистичный интерфейс, красивые эффекты
+        и стильный синий дизайн.
+    </p>
+
+    <div class="buttons">
+
+        <a href="#download" class="btn primary">
+            ↓ Скачать NEXIUM
+        </a>
+
+        <a href="#visuals" class="btn secondary">
+            Посмотреть Visuals
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="visuals">
+
+    <div class="section-title">
+
+        <div class="small">NEXIUM COLLECTION</div>
+
+        <h2>Visuals</h2>
+
+        <p>
+            Всё необходимое для комфортной игры.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">⚔️</div>
+
+            <h3>PvP Visuals</h3>
+
+            <p>
+                Чистый и удобный интерфейс,
+                созданный специально для PvP.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔥</div>
+
+            <h3>Low Fire</h3>
+
+            <p>
+                Низкое пламя позволяет видеть
+                происходящее во время боя.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌙</div>
+
+            <h3>Night Vision</h3>
+
+            <p>
+                Более яркая картинка в тёмных местах
+                без лишних элементов.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">✨</div>
+
+            <h3>Clean HUD</h3>
+
+            <p>
+                Минималистичный HUD,
+                который не мешает игровому процессу.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="features">
+
+    <div class="section-title">
+
+        <div class="small">WHY NEXIUM</div>
+
+        <h2>Создан для FPS</h2>
+
+        <p>
+            Лёгкий дизайн без ненужной нагрузки.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong>⚡</strong>
+
+            <span>
+                Лёгкий дизайн
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>60+</strong>
+
+            <span>
+                FPS ориентир*
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>0</strong>
+
+            <span>
+                Лишних элементов
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="download">
+
+    <div class="download-box">
+
+        <h2>
+            Готов попробовать?
+        </h2>
+
+        <p>
+            NEXIUM Visuals создаётся для игроков,
+            которым нужен красивый и удобный Minecraft.
+        </p>
+
+        <a
+            href="#"
+            class="btn primary"
+            onclick="downloadNexium()"
+        >
+            ↓ DOWNLOAD NEXIUM
+        </a>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="section-title">
+
+        <div class="small">FAQ</div>
+
+        <h2>Частые вопросы</h2>
+
+    </div>
+
+
+    <div class="faq">
+
+        <details>
+
+            <summary>
+                Для какой версии Minecraft?
+            </summary>
+
+            <p>
+                Версию можно указать здесь после
+                добавления настоящего файла NEXIUM.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                NEXIUM повышает FPS?
+            </summary>
+
+            <p>
+                Сам сайт FPS не повышает.
+                FPS зависит от Minecraft, модов,
+                настроек и оборудования компьютера.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Можно использовать на слабом ПК?
+            </summary>
+
+            <p>
+                Да. Сам интерфейс сайта очень лёгкий.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Где скачать NEXIUM?
+            </summary>
+
+            <p>
+                Кнопка скачивания будет работать,
+                когда к ней будет подключён настоящий
+                файл или ссылка.
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 <strong>NEXIUM Visuals</strong>
+
+    <br><br>
+
+    Made for Minecraft players 💙
+
+</footer>
+
+
+<script>
+
+function downloadNexium() {
+
+    alert(
+        "NEXIUM уже почти готов! 💙\n\n" +
+        "Сюда можно подключить настоящий файл " +
+        "NEXIUM для скачивания."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

@@ -8,9 +8,10 @@
 
 <style>
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 html {
@@ -18,543 +19,617 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    background: #03060d;
     color: white;
-    background:
-        radial-gradient(circle at 50% -10%, #155cff55, transparent 35%),
-        radial-gradient(circle at 0% 50%, #0066ff22, transparent 30%),
-        #030611;
     overflow-x: hidden;
 }
 
-/* BACKGROUND */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,168,255,.18), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(0,100,255,.08), transparent 30%),
+        #03060d;
+}
 
-body::before {
-    content: "";
+/* СНЕГ */
+
+.snow {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image:
-        linear-gradient(#ffffff05 1px, transparent 1px),
-        linear-gradient(90deg, #ffffff05 1px, transparent 1px);
-    background-size: 45px 45px;
-    mask-image: linear-gradient(to bottom, black, transparent);
+    z-index: 50;
 }
 
-/* HEADER */
+.snow span {
+    position: absolute;
+    top: -20px;
+    background: white;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75px;
-    padding: 0 7%;
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* NAVBAR */
+
+nav {
+    min-height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    background: #030611cc;
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid #2477ff33;
+    gap: 15px;
+    padding: 12px 7%;
+    background: rgba(3,6,13,.85);
+    border-bottom: 1px solid rgba(0,168,255,.15);
+    backdrop-filter: blur(12px);
+    position: relative;
     z-index: 100;
 }
 
 .logo {
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 3px;
-}
-
-.logo span {
-    color: #3185ff;
-    text-shadow: 0 0 20px #1870ff;
-}
-
-nav {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 12px;
 }
 
-nav a {
-    color: #8d9bbb;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .3s;
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #00a8ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00a8ff;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0,168,255,.35);
 }
 
-nav a:hover {
-    color: #4d91ff;
-    text-shadow: 0 0 15px #1671ff;
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    color: #00a8ff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.developer {
+    color: #738197;
+    font-size: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,168,255,.18);
+    border-radius: 9px;
+}
+
+.developer span {
+    color: #00a8ff;
+    font-weight: bold;
+}
+
+.balance {
+    padding: 10px 15px;
+    border: 1px solid rgba(0,168,255,.35);
+    border-radius: 10px;
+    background: rgba(0,168,255,.08);
+    color: #00a8ff;
+    font-weight: bold;
+}
+
+/* NAV BUTTONS */
+
+.nav-buttons {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.nav-buttons button {
+    padding: 10px 13px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #aeb8c8;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.nav-buttons button:hover {
+    color: white;
+    background: rgba(0,168,255,.1);
+    border-color: rgba(0,168,255,.35);
+    transform: translateY(-2px);
+}
+
+.nav-buttons button:active {
+    transform: scale(.94);
 }
 
 /* HERO */
 
 .hero {
-    min-height: 100vh;
-    padding: 150px 20px 100px;
-
+    min-height: 700px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
     text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
 }
 
 .badge {
-    padding: 9px 18px;
-    border-radius: 50px;
-
-    color: #62a0ff;
-    background: #1260ff12;
-    border: 1px solid #2779ff55;
-
-    font-size: 12px;
-    letter-spacing: 1px;
-
-    box-shadow: 0 0 30px #0066ff15;
-
-    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+    padding: 9px 17px;
+    border: 1px solid rgba(0,168,255,.4);
+    border-radius: 30px;
+    color: #00a8ff;
+    background: rgba(0,168,255,.07);
+    margin-bottom: 25px;
 }
 
-.hero h1 {
-    margin-top: 28px;
-
-    font-size: clamp(65px, 13vw, 150px);
-    line-height: .8;
-
-    font-weight: 1000;
-    letter-spacing: -8px;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #4b91ff,
-        #00aaff,
-        #ffffff
-    );
-
-    background-size: 300%;
-
-    -webkit-background-clip: text;
-    color: transparent;
-
-    animation: gradient 5s infinite linear;
-
-    filter: drop-shadow(0 0 30px #1474ff44);
+h1 {
+    font-size: clamp(55px,10vw,105px);
+    line-height: .9;
+    letter-spacing: -5px;
 }
 
-.hero h2 {
-    margin-top: 25px;
-    color: #64718e;
-    font-size: 17px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+h1 span {
+    color: #00a8ff;
+    text-shadow: 0 0 35px rgba(0,168,255,.45);
 }
 
 .hero p {
-    max-width: 650px;
-    margin-top: 25px;
-
-    color: #8995b1;
-    font-size: 17px;
-    line-height: 1.7;
+    max-width: 600px;
+    margin: 30px auto;
+    color: #8e9aac;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-.buttons {
-    margin-top: 35px;
+/* DOWNLOAD */
 
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+.download {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-}
-
-.btn {
-    display: inline-block;
-    padding: 15px 28px;
-
-    border-radius: 10px;
-
-    text-decoration: none;
+    padding: 17px 35px;
+    border-radius: 13px;
+    background: #00a8ff;
+    color: white;
+    font-size: 17px;
     font-weight: bold;
-
-    transition: .3s;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(0,168,255,.3);
+    transition: .2s;
 }
 
-.primary {
-    color: white;
-    background: linear-gradient(135deg, #2477ff, #0051dd);
-
-    box-shadow:
-        0 0 30px #0066ff44,
-        inset 0 1px #ffffff44;
-}
-
-.primary:hover {
+.download:hover {
     transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 0 45px #1675ff88;
+    box-shadow: 0 0 45px rgba(0,168,255,.55);
 }
 
-.secondary {
-    color: #a9b6d2;
-
-    background: #ffffff06;
-    border: 1px solid #ffffff14;
-}
-
-.secondary:hover {
-    color: white;
-    border-color: #2477ff77;
-    background: #2477ff12;
+.download:active {
+    transform: scale(.95);
 }
 
 /* SECTIONS */
 
-section {
-    padding: 110px 7%;
+.section,
+.shop {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 7%;
 }
 
-.section-title {
+.section-title,
+.shop-title {
     text-align: center;
-    margin-bottom: 55px;
+    margin-bottom: 40px;
 }
 
-.section-title .small {
-    color: #3987ff;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.section-title h2,
+.shop-title h2 {
+    font-size: 38px;
 }
 
-.section-title h2 {
+.section-title span,
+.shop-title span {
+    color: #00a8ff;
+}
+
+.section-title p,
+.shop-title p {
     margin-top: 12px;
-    font-size: clamp(32px, 5vw, 52px);
-}
-
-.section-title p {
-    margin-top: 12px;
-    color: #737f9c;
+    color: #788497;
 }
 
 /* CARDS */
 
 .cards {
-    max-width: 1150px;
-    margin: auto;
-
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.card {
-    position: relative;
-    min-height: 250px;
-
-    padding: 30px;
-
-    border-radius: 18px;
-
-    background:
-        linear-gradient(145deg, #101a33dd, #050812ee);
-
-    border: 1px solid #315caa25;
-
-    overflow: hidden;
-
-    transition: .35s;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-
-    width: 160px;
-    height: 160px;
-
-    right: -70px;
-    top: -70px;
-
-    background: #1474ff;
-    filter: blur(75px);
-    opacity: .12;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-
-    border-color: #3185ff66;
-
-    box-shadow:
-        0 20px 60px #00000066,
-        0 0 35px #0066ff12;
-}
-
-.icon {
-    width: 52px;
-    height: 52px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background: #2477ff12;
-    border: 1px solid #2477ff30;
-
-    font-size: 25px;
-
-    margin-bottom: 25px;
-}
-
-.card h3 {
-    font-size: 20px;
-}
-
-.card p {
-    margin-top: 12px;
-
-    color: #77839f;
-    line-height: 1.6;
-    font-size: 14px;
-}
-
-/* STATS */
-
-.stats {
-    max-width: 1000px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 20px;
 }
 
-.stat {
-    padding: 35px;
-    text-align: center;
-
+.card {
+    padding: 30px;
+    min-height: 190px;
     border-radius: 18px;
-
-    background: #091127aa;
-    border: 1px solid #2477ff22;
+    border: 1px solid rgba(255,255,255,.07);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.015)
+    );
+    transition: .3s;
 }
 
-.stat strong {
-    display: block;
-
-    font-size: 42px;
-    color: #4590ff;
-
-    text-shadow: 0 0 25px #1674ff66;
+.card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,168,255,.4);
 }
 
-.stat span {
-    display: block;
-    margin-top: 8px;
-
-    color: #737f99;
-    font-size: 13px;
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,168,255,.1);
+    color: #00a8ff;
+    font-size: 23px;
+    margin-bottom: 20px;
 }
 
-/* DOWNLOAD */
+.card h3 {
+    margin-bottom: 10px;
+}
 
-.download-box {
-    max-width: 950px;
-    margin: auto;
+.card p {
+    color: #7e899b;
+    line-height: 1.5;
+}
 
-    padding: 70px 30px;
+/* FPS */
 
+.fps-box {
     text-align: center;
-
+    padding: 60px 30px;
+    border: 1px solid rgba(0,168,255,.2);
     border-radius: 25px;
-
     background:
-        radial-gradient(circle at 50% 0%, #1674ff22, transparent 50%),
-        #071027cc;
-
-    border: 1px solid #3185ff33;
-
-    box-shadow:
-        0 30px 100px #00000066,
-        inset 0 1px #ffffff08;
+        radial-gradient(circle, rgba(0,168,255,.12), transparent 60%),
+        rgba(255,255,255,.02);
 }
 
-.download-box h2 {
-    font-size: 42px;
+.fps-number {
+    font-size: 70px;
+    font-weight: bold;
+    color: #00a8ff;
+    text-shadow: 0 0 30px rgba(0,168,255,.4);
 }
 
-.download-box p {
-    margin: 15px auto 30px;
-
-    max-width: 550px;
-
-    color: #7e8ba8;
-    line-height: 1.6;
+.fps-box p {
+    color: #8793a6;
+    margin: 10px 0 25px;
 }
 
-/* FAQ */
+/* REWARD */
 
-.faq {
+.reward-box {
     max-width: 800px;
     margin: auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 22px;
+    border: 1px solid rgba(0,168,255,.25);
+    background: rgba(0,168,255,.04);
 }
 
-details {
+.reward-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.reward-box h3 {
+    font-size: 28px;
     margin-bottom: 12px;
-
-    padding: 20px;
-
-    border-radius: 12px;
-
-    background: #091127aa;
-    border: 1px solid #ffffff0c;
 }
 
-summary {
+.reward-box p {
+    color: #8490a3;
+    margin-bottom: 20px;
+}
+
+.timer {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 14px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(0,168,255,.15);
+}
+
+.timer-title {
+    color: #788497;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+#timer {
+    color: #00a8ff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.reward-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    background: #00a8ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.reward-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.reward-btn:active {
+    transform: scale(.94);
+}
+
+.reward-btn.disabled {
+    background: #202936;
+    color: #687486;
+    cursor: not-allowed;
+}
+
+/* SHOP */
+
+.shop-balance {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8793a6;
+}
+
+.shop-balance strong {
+    color: #00a8ff;
+    font-size: 22px;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.item {
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.015)
+    );
+    text-align: center;
+    transition: .3s;
+}
+
+.item:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,168,255,.45);
+}
+
+.costume {
+    height: 150px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    margin-bottom: 20px;
+    background:
+        radial-gradient(circle, rgba(0,168,255,.18), transparent 65%),
+        rgba(0,168,255,.05);
+}
+
+.item h3 {
+    margin-bottom: 8px;
+}
+
+.item p {
+    color: #7e899b;
+    margin-bottom: 18px;
+}
+
+.price {
+    color: #00a8ff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,168,255,.35);
+    border-radius: 10px;
+    background: rgba(0,168,255,.08);
+    color: white;
     cursor: pointer;
     font-weight: bold;
+    transition: .2s;
 }
 
-details p {
-    margin-top: 15px;
+.buy-btn:hover {
+    background: #00a8ff;
+}
 
-    color: #7d89a5;
-    line-height: 1.6;
+.buy-btn:active {
+    transform: scale(.95);
+}
+
+.buy-btn.owned {
+    background: rgba(0,255,140,.1);
+    border-color: rgba(0,255,140,.3);
+    color: #00ff8c;
+    cursor: default;
 }
 
 /* FOOTER */
 
 footer {
-    padding: 50px 20px;
-
+    margin-top: 70px;
+    padding: 30px;
     text-align: center;
-
-    border-top: 1px solid #ffffff0a;
-
-    color: #59657f;
-    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    color: #596579;
 }
 
-footer strong {
-    color: #3e8aff;
-}
-
-/* ANIMATIONS */
-
-@keyframes gradient {
-    0% {
-        background-position: 0%;
-    }
-
-    100% {
-        background-position: 300%;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
+footer span {
+    color: #00a8ff;
 }
 
 /* MOBILE */
 
-@media(max-width: 900px) {
-
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media(max-width: 600px) {
-
-    header {
-        padding: 0 20px;
-    }
+@media(max-width:900px) {
 
     nav {
+        justify-content: center;
+    }
+
+    .header-right {
+        justify-content: center;
+    }
+
+    .developer {
         display: none;
     }
 
-    .hero h1 {
-        letter-spacing: -5px;
-    }
-
-    .cards {
+    .cards,
+    .shop-grid {
         grid-template-columns: 1fr;
     }
 
-    .stats {
-        grid-template-columns: 1fr;
+    .hero {
+        min-height: 600px;
     }
 
-    section {
-        padding: 80px 20px;
+    h1 {
+        letter-spacing: -3px;
     }
-
-    .download-box {
-        padding: 50px 20px;
-    }
-
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="background"></div>
+<div class="snow" id="snow"></div>
+
+<!-- NAVBAR -->
+
+<nav>
 
     <div class="logo">
-        NEXIUM <span>VISUALS</span>
+
+        <div class="logo-icon">
+            NX
+        </div>
+
+        <div class="logo-text">
+            NEXIUM <span>VISUALS</span>
+        </div>
+
     </div>
 
-    <nav>
-        <a href="#home">Главная</a>
-        <a href="#visuals">Visuals</a>
-        <a href="#features">Features</a>
-        <a href="#download">Скачать</a>
-    </nav>
+    <div class="header-right">
 
-</header>
+        <div class="developer">
+            Разработчик:
+            <span>xuypisuzopa</span>
+        </div>
 
+        <div class="balance">
+            💰 <span id="balance">0</span> NEX
+        </div>
 
-<section class="hero" id="home">
+        <div class="nav-buttons">
 
-    <div class="badge">
-        ⚡ NEXT GENERATION MINECRAFT VISUALS
+            <button id="visualsBtn">
+                🎨 Визуалы
+            </button>
+
+            <button id="fpsBtn">
+                ⚡ FPS BOOST
+            </button>
+
+            <button id="shopBtn">
+                🛍️ Магазин
+            </button>
+
+            <button id="rewardNavBtn">
+                🎁 Награда
+            </button>
+
+        </div>
+
     </div>
 
-    <h1>NEXIUM</h1>
+</nav>
 
-    <h2>VISUALS</h2>
 
-    <p>
-        Новый уровень визуалов для Minecraft.
-        Минималистичный интерфейс, красивые эффекты
-        и стильный синий дизайн.
-    </p>
+<!-- HERO -->
 
-    <div class="buttons">
+<section class="hero">
 
-        <a href="https://girniksvatoslav-prog.github.io/nexium-visuals/NEXIUM.zip" class="download-btn">
-    ⬇ Скачать NEXIUM
-        </a>
-            ↓ Скачать NEXIUM
-        </a>
+    <div class="hero-content">
 
-        <a href="#visuals" class="btn secondary">
-            Посмотреть Visuals
+        <div class="badge">
+            ⚡ NEXIUM VISUALS • ULTRA
+        </div>
+
+        <h1>
+            PLAY<br>
+            <span>BETTER.</span>
+        </h1>
+
+        <p>
+            Современные визуалы для Minecraft.
+            Красивый интерфейс, оптимизация и
+            плавный PvP-геймплей.
+        </p>
+
+        <a
+            class="download"
+            href="NEXIUM.zip"
+            download="NEXIUM.zip"
+        >
+            ↓ &nbsp; СКАЧАТЬ NEXIUM
         </a>
 
     </div>
@@ -562,13 +637,1251 @@ footer strong {
 </section>
 
 
-<section id="visuals">
+<!-- VISUALS -->
+
+<section class="section" id="features">
 
     <div class="section-title">
 
-        <div class="small">NEXIUM COLLECTION</div>
+        <h2>
+            Почему <span>NEXIUM?</span>
+        </h2>
 
-        <h2>Visuals</h2>
+        <p>
+            Всё необходимое для комфортной игры.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">⚡</div>
+
+            <h3>FPS BOOST</h3>
+
+            <p>
+                Оптимизация визуалов для
+                максимально плавной игры.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">🎨</div>
+
+            <h3>ULTRA VISUALS</h3>
+
+            <p>
+                Красивые эффекты, PvP-анимации
+                и современный стиль.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">🛡️</div>
+
+            <h3>LIGHTWEIGHT</h3>
+
+            <p>
+                Минимум лишней нагрузки —
+                максимум производительности.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FPS -->
+
+<section class="section" id="fps">
+
+    <div class="fps-box">
+
+        <div class="fps-number">
+            FPS+
+        </div>
+
+        <h2>
+            Больше плавности.
+        </h2>
+
+        <p>
+            NEXIUM создаётся с учётом слабых ПК
+            и ноутбуков.
+        </p>
+
+        <a
+            class="download"
+            href="NEXIUM.zip"
+            download="NEXIUM.zip"
+        >
+            ↓ СКАЧАТЬ
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- REWARD -->
+
+<section class="section" id="reward">
+
+    <div class="section-title">
+
+        <h2>
+            Ежедневная <span>награда</span>
+        </h2>
+
+        <p>
+            За каждый новый день получай NEX.
+        </p>
+
+    </div>
+
+    <div class="reward-box">
+
+        <div class="reward-icon">
+            🎁
+        </div>
+
+        <h3>
+            +2 NEX каждый день
+        </h3>
+
+        <p id="rewardText">
+            Твоя ежедневная награда готова!
+        </p>
+
+        <div class="timer">
+
+            <div class="timer-title">
+                Следующая награда через
+            </div>
+
+            <div id="timer">
+                ГОТОВО!
+            </div>
+
+        </div>
+
+        <button
+            class="reward-btn"
+            id="rewardBtn"
+        >
+            🎁 ПОЛУЧИТЬ +2 NEX
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SHOP -->
+
+<section class="shop" id="shop">
+
+    <div class="shop-title">
+
+        <h2>
+            NEXIUM <span>SHOP</span>
+        </h2>
+
+        <p>
+            Покупай костюмы за заработанные NEX.
+        </p>
+
+    </div>
+
+    <div class="shop-balance">
+
+        Твой баланс:
+
+        <strong>
+            💰 <span id="shopBalance">0</span> NEX
+        </strong>
+
+    </div>
+
+    <div class="shop-grid">
+
+        <div class="item">
+
+            <div class="costume">
+                🥷
+            </div>
+
+            <h3>
+                NEX Shadow
+            </h3>
+
+            <p>
+                Тёмный костюм ниндзя.
+            </p>
+
+            <div class="price">
+                💰 5 NEX
+            </div>
+
+            <button
+                class="buy-btn"
+                data-id="item1"
+                data-price="5"
+                data-name="NEX Shadow"
+            >
+                КУПИТЬ
+            </button>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="costume">
+                ⚡
+            </div>
+
+            <h3>
+                NEX Lightning
+            </h3>
+
+            <p>
+                Электрический костюм.
+            </p>
+
+            <div class="price">
+                💰 10 NEX
+            </div>
+
+            <button
+                class="buy-btn"
+                data-id="item2"
+                data-price="10"
+                data-name="NEX Lightning"
+            >
+                КУПИТЬ
+            </button>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="costume">
+                👑
+            </div>
+
+            <h3>
+                NEX King
+            </h3>
+
+            <p>
+                Королевский костюм NEXIUM.
+            </p>
+
+            <div class="price">
+                💰 20 NEX
+            </div>
+
+            <button
+                class="buy-btn"
+                data-id="item3"
+                data-price="20"
+                data-name="NEX King"
+            >
+                КУПИТЬ
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026
+    <span>NEXIUM Visuals</span>
+    • Built for Minecraft
+
+</footer>
+
+
+<script>
+
+/* ==============================
+   NEXIUM SYSTEM
+============================== */
+
+let balance = Number(
+    localStorage.getItem("nexiumBalance")
+) || 0;
+
+let rewardTime = Number(
+    localStorage.getItem("nexiumRewardTime")
+) || 0;
+
+let ownedItems = JSON.parse(
+    localStorage.getItem("nexiumOwnedItems") || "[]"
+);
+
+
+/* ==============================
+   БАЛАНС
+============================== */
+
+function updateBalance() {
+
+    document.getElementById("balance").textContent = balance;
+
+    document.getElementById("shopBalance").textContent = balance;
+
+    localStorage.setItem(
+        "nexiumBalance",
+        balance
+    );
+}
+
+
+/* ==============================
+   НАГРАДА
+============================== */
+
+function claimReward() {
+
+    const now = Date.now();
+
+    if (rewardTime > now) {
+        return;
+    }
+
+    balance += 2;
+
+    rewardTime =
+        now + (24 * 60 * 60 * 1000);
+
+    localStorage.setItem(
+        "nexiumRewardTime",
+        rewardTime
+    );
+
+    updateBalance();
+
+    updateReward();
+
+}
+
+
+/* ==============================
+   ТАЙМЕР
+============================== */
+
+function updateReward() {
+
+    const timer =
+        document.getElementById("timer");
+
+    const button =
+        document.getElementById("rewardBtn");
+
+    const text =
+        document.getElementById("rewardText");
+
+    const now = Date.now();
+
+
+    if (rewardTime <= now) {
+
+        timer.textContent = "ГОТОВО!";
+
+        button.disabled = false;
+
+        button.classList.remove("disabled");
+
+        button.textContent =
+            "🎁 ПОЛУЧИТЬ +2 NEX";
+
+        text.textContent =
+            "Твоя ежедневная награда готова!";
+
+        return;
+    }
+
+
+    button.disabled = true;
+
+    button.classList.add("disabled");
+
+    button.textContent =
+        "⏳ НАГРАДА ПОЛУЧЕНА";
+
+
+    text.textContent =
+        "Возвращайся после окончания таймера.";
+
+
+    let difference =
+        rewardTime - now;
+
+
+    let hours =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60)
+        );
+
+
+    let minutes =
+        Math.floor(
+            (difference %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    let seconds =
+        Math.floor(
+            (difference %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    timer.textContent =
+        String(hours).padStart(2,"0") +
+        ":" +
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+}
+
+
+/* ==============================
+   МАГАЗИН
+============================== */
+
+function buyItem(id, price, name) {
+
+    if (ownedItems.includes(id)) {
+        return;
+    }
+
+
+    if (balance < price) {
+
+        alert(
+            "❌ Недостаточно NEX!\n\n" +
+            "Цена: " + price + " NEX\n" +
+            "Баланс: " + balance + " NEX"
+        );
+
+        return;
+    }
+
+
+    balance -= price;
+
+    ownedItems.push(id);
+
+
+    localStorage.setItem(
+        "nexiumOwnedItems",
+        JSON.stringify(ownedItems)
+    );
+
+
+    updateBalance();
+
+    updateShop();
+
+
+    alert(
+        "🔥 Покупка успешна!\n\n" +
+        "Ты купил " + name + "!"
+    );
+}
+
+
+/* ==============================
+   ОБНОВЛЕНИЕ SHOP
+============================== */
+
+function updateShop() {
+
+    document
+        .querySelectorAll(".buy-btn")
+        .forEach(function(button) {
+
+            const id =
+                button.dataset.id;
+
+            if (
+                ownedItems.includes(id)
+            ) {
+
+                button.textContent =
+                    "КУПЛЕНО ✓";
+
+                button.classList.add(
+                    "owned"
+                );
+
+                button.disabled = true;
+            }
+
+        });
+}
+
+
+/* ==============================
+   НАВИГАЦИЯ
+============================== */
+
+function goTo(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+/* ==============================
+   КНОПКИ НАВИГАЦИИ
+============================== */
+
+document
+    .getElementById("visualsBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo("features");
+        }
+    );
+
+
+document
+    .getElementById("fpsBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo("fps");
+        }
+    );
+
+
+document
+    .getElementById("shopBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo("shop");
+        }
+    );
+
+
+document
+    .getElementById("rewardNavBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo("reward");
+        }
+    );
+
+
+/* ==============================
+   КНОПКА НАГРАДЫ
+============================== */
+
+document
+    .getElementById("rewardBtn")
+    .addEventListener(
+        "click",
+        claimReward
+    );
+
+
+/* ==============================
+   КНОПКИ ПОКУПКИ
+============================== */
+
+document
+    .querySelectorAll(".buy-btn")
+    .forEach(function(button) {
+
+        butto
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXIUM Visuals</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #03060d;
+    color: white;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,168,255,0.18), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(0,100,255,0.08), transparent 30%),
+        #03060d;
+}
+
+/* СНЕГ */
+
+.snow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.snow span {
+    position: absolute;
+    top: -20px;
+    background: white;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* NAVBAR */
+
+nav {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 7%;
+    background: rgba(3,6,13,0.85);
+    border-bottom: 1px solid rgba(0,168,255,0.15);
+    backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #00a8ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00a8ff;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0,168,255,0.35);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    color: #00a8ff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.developer {
+    color: #738197;
+    font-size: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,168,255,0.18);
+    border-radius: 9px;
+}
+
+.developer span {
+    color: #00a8ff;
+    font-weight: bold;
+}
+
+.balance {
+    padding: 10px 15px;
+    border: 1px solid rgba(0,168,255,0.35);
+    border-radius: 10px;
+    background: rgba(0,168,255,0.08);
+    color: #00a8ff;
+    font-weight: bold;
+}
+
+/* КНОПКИ */
+
+.nav-buttons {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.nav-buttons button {
+    padding: 10px 13px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #aeb8c8;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-buttons button:hover {
+    color: white;
+    background: rgba(0,168,255,0.1);
+    border-color: rgba(0,168,255,0.35);
+    transform: translateY(-2px);
+}
+
+.nav-buttons button:active {
+    transform: scale(0.94);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 17px;
+    border: 1px solid rgba(0,168,255,0.4);
+    border-radius: 30px;
+    color: #00a8ff;
+    background: rgba(0,168,255,0.07);
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(55px, 10vw, 105px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+}
+
+h1 span {
+    color: #00a8ff;
+    text-shadow: 0 0 35px rgba(0,168,255,0.45);
+}
+
+.hero p {
+    margin: 30px auto;
+    max-width: 600px;
+    color: #8e9aac;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* DOWNLOAD */
+
+.download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 17px 35px;
+    border: none;
+    border-radius: 13px;
+    background: #00a8ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(0,168,255,0.3);
+    transition: 0.25s;
+}
+
+.download:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 0 45px rgba(0,168,255,0.55);
+}
+
+.download:active {
+    transform: scale(0.95);
+}
+
+/* SECTIONS */
+
+.section,
+.shop {
+    padding: 80px 7%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title,
+.shop-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2,
+.shop-title h2 {
+    font-size: 38px;
+}
+
+.section-title span,
+.shop-title span {
+    color: #00a8ff;
+}
+
+.section-title p,
+.shop-title p {
+    margin-top: 12px;
+    color: #788497;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 30px;
+    min-height: 190px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.055),
+        rgba(255,255,255,0.015)
+    );
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,168,255,0.4);
+    box-shadow: 0 15px 40px rgba(0,168,255,0.08);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,168,255,0.1);
+    color: #00a8ff;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #7e899b;
+    line-height: 1.5;
+}
+
+/* FPS */
+
+.fps-box {
+    text-align: center;
+    padding: 60px 30px;
+    border: 1px solid rgba(0,168,255,0.2);
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at center, rgba(0,168,255,0.12), transparent 60%),
+        rgba(255,255,255,0.02);
+}
+
+.fps-number {
+    font-size: 70px;
+    font-weight: bold;
+    color: #00a8ff;
+    text-shadow: 0 0 30px rgba(0,168,255,0.4);
+}
+
+.fps-box p {
+    color: #8793a6;
+    margin: 10px 0 25px;
+}
+
+/* REWARD */
+
+.reward-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 22px;
+    border: 1px solid rgba(0,168,255,0.25);
+    background: rgba(0,168,255,0.04);
+}
+
+.reward-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.reward-box h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.reward-box p {
+    color: #8490a3;
+    margin-bottom: 20px;
+}
+
+.timer {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(0,168,255,0.15);
+}
+
+.timer-title {
+    color: #788497;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+#timer {
+    color: #00a8ff;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.reward-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    background: #00a8ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.reward-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.reward-btn:active {
+    transform: scale(0.94);
+}
+
+.reward-btn.disabled {
+    background: #202936;
+    color: #687486;
+    cursor: not-allowed;
+}
+
+/* SHOP */
+
+.shop-balance {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8793a6;
+}
+
+.shop-balance strong {
+    color: #00a8ff;
+    font-size: 22px;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item {
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.015)
+    );
+    text-align: center;
+    transition: 0.3s;
+}
+
+.item:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,168,255,0.45);
+}
+
+.costume {
+    height: 150px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    margin-bottom: 20px;
+    background:
+        radial-gradient(circle, rgba(0,168,255,0.18), transparent 65%),
+        rgba(0,168,255,0.05);
+}
+
+.item h3 {
+    margin-bottom: 8px;
+}
+
+.item p {
+    color: #7e899b;
+    margin-bottom: 18px;
+}
+
+.price {
+    color: #00a8ff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,168,255,0.35);
+    border-radius: 10px;
+    background: rgba(0,168,255,0.08);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.buy-btn:hover {
+    background: #00a8ff;
+}
+
+.buy-btn:active {
+    transform: scale(0.95);
+}
+
+.buy-btn.owned {
+    background: rgba(0,255,140,0.1);
+    border-color: rgba(0,255,140,0.3);
+    color: #00ff8c;
+    cursor: default;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 70px;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #596579;
+}
+
+footer span {
+    color: #00a8ff;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 12px 20px;
+        justify-content: center;
+    }
+
+    .header-right {
+        justify-content: center;
+    }
+
+    .developer {
+        display: none;
+    }
+
+    .cards,
+    .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="snow" id="snow"></div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            NX
+        </div>
+
+        <div class="logo-text">
+            NEXIUM <span>VISUALS</span>
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="developer">
+            Разработчик:
+            <span>xuypisuzopa</span>
+        </div>
+
+        <div class="balance">
+            💰 <span id="balance">0</span> NEX
+        </div>
+
+        <div class="nav-buttons">
+
+            <button id="visualsBtn">
+                🎨 Визуалы
+            </button>
+
+            <button id="fpsBtn">
+                ⚡ FPS BOOST
+            </button>
+
+            <button id="shopBtn">
+                🛍️ Магазин
+            </button>
+
+            <button id="rewardNavBtn">
+                🎁 Награда
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ⚡ NEXIUM VISUALS • ULTRA
+        </div>
+
+        <h1>
+            PLAY<br>
+            <span>BETTER.</span>
+        </h1>
+
+        <p>
+            Современные визуалы для Minecraft.
+            Красивый интерфейс, оптимизация и
+            плавный PvP-геймплей.
+        </p>
+
+        <a
+            class="download"
+            href="./NEXIUM.zip"
+            download
+        >
+            ↓ &nbsp; СКАЧАТЬ NEXIUM
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- VISUALS -->
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>
+            Почему <span>NEXIUM?</span>
+        </h2>
 
         <p>
             Всё необходимое для комфортной игры.
@@ -581,13 +1894,17 @@ footer strong {
 
         <div class="card">
 
-            <div class="icon">⚔️</div>
+            <div class="icon">
+                ⚡
+            </div>
 
-            <h3>PvP Visuals</h3>
+            <h3>
+                FPS BOOST
+            </h3>
 
             <p>
-                Чистый и удобный интерфейс,
-                созданный специально для PvP.
+                Оптимизация визуалов для
+                максимально плавной игры.
             </p>
 
         </div>
@@ -595,13 +1912,17 @@ footer strong {
 
         <div class="card">
 
-            <div class="icon">🔥</div>
+            <div class="icon">
+                🎨
+            </div>
 
-            <h3>Low Fire</h3>
+            <h3>
+                ULTRA VISUALS
+            </h3>
 
             <p>
-                Низкое пламя позволяет видеть
-                происходящее во время боя.
+                Красивые эффекты, PvP-анимации
+                и современный стиль.
             </p>
 
         </div>
@@ -609,27 +1930,17 @@ footer strong {
 
         <div class="card">
 
-            <div class="icon">🌙</div>
+            <div class="icon">
+                🛡️
+            </div>
 
-            <h3>Night Vision</h3>
-
-            <p>
-                Более яркая картинка в тёмных местах
-                без лишних элементов.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">✨</div>
-
-            <h3>Clean HUD</h3>
+            <h3>
+                LIGHTWEIGHT
+            </h3>
 
             <p>
-                Минималистичный HUD,
-                который не мешает игровому процессу.
+                Минимум лишней нагрузки —
+                максимум производительности.
             </p>
 
         </div>
@@ -639,79 +1950,31 @@ footer strong {
 </section>
 
 
-<section id="features">
+<!-- FPS -->
 
-    <div class="section-title">
+<section class="section" id="fps">
 
-        <div class="small">WHY NEXIUM</div>
+    <div class="fps-box">
 
-        <h2>Создан для FPS</h2>
-
-        <p>
-            Лёгкий дизайн без ненужной нагрузки.
-        </p>
-
-    </div>
-
-
-    <div class="stats">
-
-        <div class="stat">
-
-            <strong>⚡</strong>
-
-            <span>
-                Лёгкий дизайн
-            </span>
-
+        <div class="fps-number">
+            FPS+
         </div>
-
-
-        <div class="stat">
-
-            <strong>60+</strong>
-
-            <span>
-                FPS ориентир*
-            </span>
-
-        </div>
-
-
-        <div class="stat">
-
-            <strong>0</strong>
-
-            <span>
-                Лишних элементов
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="download">
-
-    <div class="download-box">
 
         <h2>
-            Готов попробовать?
+            Больше плавности.
         </h2>
 
         <p>
-            NEXIUM Visuals создаётся для игроков,
-            которым нужен красивый и удобный Minecraft.
+            NEXIUM создаётся с учётом слабых ПК
+            и ноутбуков.
         </p>
 
         <a
-            href="#"
-            class="btn primary"
-            onclick="downloadNexium()"
+            class="download"
+            href="./NEXIUM.zip"
+            download
         >
-            ↓ DOWNLOAD NEXIUM
+            ↓ СКАЧАТЬ
         </a>
 
     </div>
@@ -719,74 +1982,182 @@ footer strong {
 </section>
 
 
-<section>
+<!-- REWARD -->
+
+<section class="section" id="reward">
 
     <div class="section-title">
 
-        <div class="small">FAQ</div>
+        <h2>
+            Ежедневная <span>награда</span>
+        </h2>
 
-        <h2>Частые вопросы</h2>
+        <p>
+            За каждый новый день получай NEX.
+        </p>
 
     </div>
 
 
-    <div class="faq">
+    <div class="reward-box">
 
-        <details>
+        <div class="reward-icon">
+            🎁
+        </div>
 
-            <summary>
-                Для какой версии Minecraft?
-            </summary>
+        <h3>
+            +2 NEX каждый день
+        </h3>
+
+        <p id="rewardText">
+            Твоя ежедневная награда готова!
+        </p>
+
+
+        <div class="timer">
+
+            <div class="timer-title">
+                Следующая награда через
+            </div>
+
+            <div id="timer">
+                ГОТОВО!
+            </div>
+
+        </div>
+
+
+        <button
+            class="reward-btn"
+            id="rewardBtn"
+        >
+            🎁 ПОЛУЧИТЬ +2 NEX
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SHOP -->
+
+<section class="shop" id="shop">
+
+    <div class="shop-title">
+
+        <h2>
+            NEXIUM <span>SHOP</span>
+        </h2>
+
+        <p>
+            Покупай костюмы за заработанные NEX.
+        </p>
+
+    </div>
+
+
+    <div class="shop-balance">
+
+        Твой баланс:
+
+        <strong>
+            💰 <span id="shopBalance">0</span> NEX
+        </strong>
+
+    </div>
+
+
+    <div class="shop-grid">
+
+
+        <div class="item">
+
+            <div class="costume">
+                🥷
+            </div>
+
+            <h3>
+                NEX Shadow
+            </h3>
 
             <p>
-                Версию можно указать здесь после
-                добавления настоящего файла NEXIUM.
+                Тёмный костюм ниндзя.
             </p>
 
-        </details>
+            <div class="price">
+                💰 5 NEX
+            </div>
+
+            <button
+                class="buy-btn"
+                data-id="shadow"
+                data-price="5"
+                data-name="NEX Shadow"
+            >
+                КУПИТЬ
+            </button>
+
+        </div>
 
 
-        <details>
+        <div class="item">
 
-            <summary>
-                NEXIUM повышает FPS?
-            </summary>
+            <div class="costume">
+                ⚡
+            </div>
+
+            <h3>
+                NEX Lightning
+            </h3>
 
             <p>
-                Сам сайт FPS не повышает.
-                FPS зависит от Minecraft, модов,
-                настроек и оборудования компьютера.
+                Электрический костюм.
             </p>
 
-        </details>
+            <div class="price">
+                💰 10 NEX
+            </div>
+
+            <button
+                class="buy-btn"
+                data-id="lightning"
+                data-price="10"
+                data-name="NEX Lightning"
+            >
+                КУПИТЬ
+            </button>
+
+        </div>
 
 
-        <details>
+        <div class="item">
 
-            <summary>
-                Можно использовать на слабом ПК?
-            </summary>
+            <div class="costume">
+                👑
+            </div>
+
+            <h3>
+                NEX King
+            </h3>
 
             <p>
-                Да. Сам интерфейс сайта очень лёгкий.
+                Королевский костюм.
             </p>
 
-        </details>
+            <div class="price">
+                💰 20 NEX
+            </div>
 
+            <button
+                class="buy-btn"
+                data-id="king"
+                data-price="20"
+                data-name="NEX King"
+            >
+                КУПИТЬ
+            </button>
 
-        <details>
-
-            <summary>
-                Где скачать NEXIUM?
-            </summary>
-
-            <p>
-                Кнопка скачивания будет работать,
-                когда к ней будет подключён настоящий
-                файл или ссылка.
-            </p>
-
-        </details>
+        </div>
 
     </div>
 
@@ -795,28 +2166,299 @@ footer strong {
 
 <footer>
 
-    © 2026 <strong>NEXIUM Visuals</strong>
-
-    <br><br>
-
-    Made for Minecraft players 💙
+    © 2026
+    <span>NEXIUM Visuals</span>
+    • Built for Minecraft
 
 </footer>
 
 
 <script>
 
-function downloadNexium() {
+/* ================================
+   NEXIUM BALANCE
+================================ */
+
+let balance =
+    Number(localStorage.getItem("nexiumBalance")) || 0;
+
+
+/* ================================
+   REWARD TIMER
+================================ */
+
+let rewardTime =
+    Number(localStorage.getItem("nexiumRewardTime")) || 0;
+
+
+/* ================================
+   OWNED ITEMS
+================================ */
+
+let ownedItems =
+    JSON.parse(
+        localStorage.getItem("nexiumOwnedItems") || "[]"
+    );
+
+
+/* ================================
+   UPDATE BALANCE
+================================ */
+
+function updateBalance() {
+
+    document.getElementById("balance").textContent =
+        balance;
+
+    document.getElementById("shopBalance").textContent =
+        balance;
+
+    localStorage.setItem(
+        "nexiumBalance",
+        balance
+    );
+}
+
+
+/* ================================
+   CLAIM REWARD
+================================ */
+
+function claimReward() {
+
+    const now = Date.now();
+
+    if (rewardTime > now) {
+        return;
+    }
+
+    balance += 2;
+
+    rewardTime =
+        now + 24 * 60 * 60 * 1000;
+
+    localStorage.setItem(
+        "nexiumRewardTime",
+        rewardTime
+    );
+
+    updateBalance();
+    updateReward();
+
+}
+
+
+/* ================================
+   UPDATE REWARD
+================================ */
+
+function updateReward() {
+
+    const timer =
+        document.getElementById("timer");
+
+    const button =
+        document.getElementById("rewardBtn");
+
+    const text =
+        document.getElementById("rewardText");
+
+    const now = Date.now();
+
+
+    if (rewardTime <= now) {
+
+        timer.textContent =
+            "ГОТОВО!";
+
+        button.disabled =
+            false;
+
+        button.classList.remove(
+            "disabled"
+        );
+
+        button.textContent =
+            "🎁 ПОЛУЧИТЬ +2 NEX";
+
+        text.textContent =
+            "Твоя ежедневная награда готова!";
+
+        return;
+    }
+
+
+    button.disabled =
+        true;
+
+    button.classList.add(
+        "disabled"
+    );
+
+    button.textContent =
+        "⏳ НАГРАДА ПОЛУЧЕНА";
+
+
+    const difference =
+        rewardTime - now;
+
+
+    const hours =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    timer.textContent =
+        String(hours).padStart(2,"0") +
+        ":" +
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
+
+}
+
+
+/* ================================
+   SHOP
+================================ */
+
+function buyItem(
+    id,
+    price,
+    name
+) {
+
+    if (ownedItems.includes(id)) {
+        return;
+    }
+
+
+    if (balance < price) {
+
+        alert(
+            "❌ Недостаточно NEX!\n\n" +
+            "Цена: " + price + " NEX\n" +
+            "Твой баланс: " + balance + " NEX"
+        );
+
+        return;
+    }
+
+
+    balance -= price;
+
+    ownedItems.push(id);
+
+
+    localStorage.setItem(
+        "nexiumOwnedItems",
+        JSON.stringify(ownedItems)
+    );
+
+
+    updateBalance();
+    updateShop();
+
 
     alert(
-        "NEXIUM уже почти готов! 💙\n\n" +
-        "Сюда можно подключить настоящий файл " +
-        "NEXIUM для скачивания."
+        "🔥 Покупка успешна!\n\n" +
+        "Ты купил: " + name
     );
 
 }
 
-</script>
 
-</body>
-</html>
+/* ================================
+   UPDATE SHOP
+================================ */
+
+function updateShop() {
+
+    document
+        .querySelectorAll(".buy-btn")
+        .forEach(function(button) {
+
+            const id =
+                button.dataset.id;
+
+
+            if (
+                ownedItems.includes(id)
+            ) {
+
+                button.textContent =
+                    "КУПЛЕНО ✓";
+
+                button.classList.add(
+                    "owned"
+                );
+
+                button.disabled =
+                    true;
+
+            }
+
+        });
+
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+function goTo(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) {
+        return;
+    }
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+/* ================================
+   NAV BUTTONS
+================================ */
+
+document
+    .getElementById("visualsBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo("features");
+        }
+    );
+
+
+document
+    .getElementById("fpsBtn")
+    .addEventListener(
+        "click",
+        function() {
+            goTo

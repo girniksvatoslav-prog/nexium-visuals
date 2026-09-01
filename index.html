@@ -3,544 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NEXIUM Visuals</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
-    background: #03060d;
+    margin: 0;
+    background: #05070d;
     color: white;
+    font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
 
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(0,168,255,.18), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(0,100,255,.08), transparent 30%),
-        #03060d;
-}
-
-/* СНЕГ */
-
-.snow {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
-}
-
-.snow span {
-    position: absolute;
-    top: -20px;
-    background: white;
-    border-radius: 50%;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-
-/* NAVBAR */
-
-nav {
-    min-height: 75px;
+.header {
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    padding: 12px 7%;
-    background: rgba(3,6,13,.85);
-    border-bottom: 1px solid rgba(0,168,255,.15);
-    backdrop-filter: blur(12px);
-    position: relative;
-    z-index: 100;
+    padding: 0 25px;
+    background: #080b14;
+    border-bottom: 1px solid #00a8ff33;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-icon {
-    width: 42px;
-    height: 42px;
-    border: 2px solid #00a8ff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #00a8ff;
-    font-weight: bold;
-    box-shadow: 0 0 20px rgba(0,168,255,.35);
-}
-
-.logo-text {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     letter-spacing: 2px;
 }
 
-.logo-text span {
-    color: #00a8ff;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.developer {
-    color: #738197;
-    font-size: 12px;
-    padding: 8px 12px;
-    border: 1px solid rgba(0,168,255,.18);
-    border-radius: 9px;
-}
-
-.developer span {
-    color: #00a8ff;
-    font-weight: bold;
+.logo small {
+    display: block;
+    font-size: 9px;
+    color: #aaa;
+    letter-spacing: 3px;
 }
 
 .balance {
-    padding: 10px 15px;
-    border: 1px solid rgba(0,168,255,.35);
-    border-radius: 10px;
-    background: rgba(0,168,255,.08);
+    background: #0d1422;
+    border: 1px solid #00a8ff55;
+    padding: 10px 16px;
+    border-radius: 12px;
     color: #00a8ff;
     font-weight: bold;
 }
 
-/* NAV BUTTONS */
-
-.nav-buttons {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
 }
-
-.nav-buttons button {
-    padding: 10px 13px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: #aeb8c8;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.nav-buttons button:hover {
-    color: white;
-    background: rgba(0,168,255,.1);
-    border-color: rgba(0,168,255,.35);
-    transform: translateY(-2px);
-}
-
-.nav-buttons button:active {
-    transform: scale(.94);
-}
-
-/* HERO */
 
 .hero {
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 80px 20px;
+    padding: 30px 10px;
 }
 
-.hero-content {
-    max-width: 850px;
-}
-
-.badge {
-    display: inline-block;
-    padding: 9px 17px;
-    border: 1px solid rgba(0,168,255,.4);
-    border-radius: 30px;
+.hero h1 {
+    font-size: 42px;
+    margin: 0;
     color: #00a8ff;
-    background: rgba(0,168,255,.07);
-    margin-bottom: 25px;
-}
-
-h1 {
-    font-size: clamp(55px,10vw,105px);
-    line-height: .9;
-    letter-spacing: -5px;
-}
-
-h1 span {
-    color: #00a8ff;
-    text-shadow: 0 0 35px rgba(0,168,255,.45);
 }
 
 .hero p {
-    max-width: 600px;
-    margin: 30px auto;
-    color: #8e9aac;
-    font-size: 18px;
-    line-height: 1.6;
+    color: #aaa;
 }
 
-/* DOWNLOAD */
-
-.download {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 17px 35px;
-    border-radius: 13px;
-    background: #00a8ff;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 0 30px rgba(0,168,255,.3);
-    transition: .2s;
-}
-
-.download:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 0 45px rgba(0,168,255,.55);
-}
-
-.download:active {
-    transform: scale(.95);
-}
-
-/* SECTIONS */
-
-.section,
-.shop {
-    max-width: 1200px;
-    margin: auto;
-    padding: 80px 7%;
-}
-
-.section-title,
-.shop-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-title h2,
-.shop-title h2 {
-    font-size: 38px;
-}
-
-.section-title span,
-.shop-title span {
-    color: #00a8ff;
-}
-
-.section-title p,
-.shop-title p {
-    margin-top: 12px;
-    color: #788497;
-}
-
-/* CARDS */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-}
-
-.card {
-    padding: 30px;
-    min-height: 190px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,.07);
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.015)
-    );
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    border-color: rgba(0,168,255,.4);
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
+.buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: rgba(0,168,255,.1);
-    color: #00a8ff;
-    font-size: 23px;
-    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 25px 0;
 }
 
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.card p {
-    color: #7e899b;
-    line-height: 1.5;
-}
-
-/* FPS */
-
-.fps-box {
-    text-align: center;
-    padding: 60px 30px;
-    border: 1px solid rgba(0,168,255,.2);
-    border-radius: 25px;
-    background:
-        radial-gradient(circle, rgba(0,168,255,.12), transparent 60%),
-        rgba(255,255,255,.02);
-}
-
-.fps-number {
-    font-size: 70px;
-    font-weight: bold;
-    color: #00a8ff;
-    text-shadow: 0 0 30px rgba(0,168,255,.4);
-}
-
-.fps-box p {
-    color: #8793a6;
-    margin: 10px 0 25px;
-}
-
-/* REWARD */
-
-.reward-box {
-    max-width: 800px;
-    margin: auto;
-    padding: 40px;
-    text-align: center;
-    border-radius: 22px;
-    border: 1px solid rgba(0,168,255,.25);
-    background: rgba(0,168,255,.04);
-}
-
-.reward-icon {
-    font-size: 55px;
-    margin-bottom: 15px;
-}
-
-.reward-box h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.reward-box p {
-    color: #8490a3;
-    margin-bottom: 20px;
-}
-
-.timer {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 14px;
-    background: rgba(0,0,0,.25);
-    border: 1px solid rgba(0,168,255,.15);
-}
-
-.timer-title {
-    color: #788497;
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-#timer {
-    color: #00a8ff;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.reward-btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
+.main-btn {
     background: #00a8ff;
     color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: .2s;
 }
 
-.reward-btn:hover {
-    transform: translateY(-3px) scale(1.03);
+.main-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00a8ff66;
 }
 
-.reward-btn:active {
-    transform: scale(.94);
-}
-
-.reward-btn.disabled {
-    background: #202936;
-    color: #687486;
-    cursor: not-allowed;
-}
-
-/* SHOP */
-
-.shop-balance {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #8793a6;
-}
-
-.shop-balance strong {
+.section-title {
+    margin-top: 45px;
     color: #00a8ff;
-    font-size: 22px;
+    font-size: 25px;
 }
 
-.shop-grid {
+.shop {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
 }
 
 .item {
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.08);
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.06),
-        rgba(255,255,255,.015)
-    );
+    background: #0a0f1a;
+    border: 1px solid #172238;
+    border-radius: 18px;
+    padding: 18px;
     text-align: center;
-    transition: .3s;
+    transition: .2s;
 }
 
 .item:hover {
-    transform: translateY(-7px);
-    border-color: rgba(0,168,255,.45);
+    transform: translateY(-5px);
+    border-color: #00a8ff88;
 }
 
-.costume {
+.item-preview {
     height: 150px;
-    border-radius: 16px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-size: 70px;
-    margin-bottom: 20px;
-    background:
-        radial-gradient(circle, rgba(0,168,255,.18), transparent 65%),
-        rgba(0,168,255,.05);
 }
 
 .item h3 {
-    margin-bottom: 8px;
-}
-
-.item p {
-    color: #7e899b;
-    margin-bottom: 18px;
+    margin: 8px 0;
 }
 
 .price {
     color: #00a8ff;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin: 10px;
 }
 
-.buy-btn {
+.item button {
     width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(0,168,255,.35);
+    padding: 11px;
+    border: none;
     border-radius: 10px;
-    background: rgba(0,168,255,.08);
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: .2s;
-}
-
-.buy-btn:hover {
     background: #00a8ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.buy-btn:active {
-    transform: scale(.95);
+.item button:disabled {
+    background: #303846;
+    cursor: not-allowed;
 }
 
-.buy-btn.owned {
-    background: rgba(0,255,140,.1);
-    border-color: rgba(0,255,140,.3);
-    color: #00ff8c;
-    cursor: default;
-}
-
-/* FOOTER */
-
-footer {
-    margin-top: 70px;
-    padding: 30px;
+.reward {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #0b1728, #07101d);
+    border: 1px solid #00a8ff44;
+    border-radius: 18px;
+    padding: 20px;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,.06);
-    color: #596579;
 }
 
-footer span {
+.reward button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #00a8ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 3D VIEWER */
+
+.viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.82);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.viewer-box {
+    width: min(900px, 100%);
+    background: #080d17;
+    border: 1px solid #00a8ff66;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 0 60px #00a8ff22;
+}
+
+.viewer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.viewer-top h2 {
+    margin: 0;
     color: #00a8ff;
 }
 
-/* MOBILE */
+.close {
+    background: #151c29;
+    border: none;
+    color: white;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-@media(max-width:900px) {
+.scene {
+    height: 430px;
+    margin-top: 15px;
+    background:
+        radial-gradient(circle at center, #11253b 0%, #080d17 55%, #05070d 100%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 900px;
+    cursor: grab;
+    touch-action: none;
+}
 
-    nav {
-        justify-content: center;
+.scene:active {
+    cursor: grabbing;
+}
+
+.character {
+    position: relative;
+    width: 130px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform .08s linear;
+}
+
+/* HEAD */
+
+.head {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 15px;
+    top: 0;
+    background: #f0b27a;
+    border: 4px solid #111827;
+    border-radius: 8px;
+    box-shadow: inset -15px 0 #d99563;
+}
+
+.hair {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    left: 15px;
+    top: 0;
+    background: #222;
+    border-radius: 8px 8px 2px 2px;
+    z-index: 2;
+}
+
+/* BODY */
+
+.body {
+    position: absolute;
+    width: 115px;
+    height: 105px;
+    left: 8px;
+    top: 102px;
+    background: #00a8ff;
+    border: 4px solid #111827;
+    border-radius: 6px;
+}
+
+/* ARMS */
+
+.arm {
+    position: absolute;
+    width: 35px;
+    height: 105px;
+    top: 103px;
+    background: #f0b27a;
+    border: 4px solid #111827;
+    border-radius: 6px;
+}
+
+.arm.left {
+    left: -29px;
+}
+
+.arm.right {
+    right: -29px;
+}
+
+/* LEGS */
+
+.leg {
+    position: absolute;
+    width: 50px;
+    height: 95px;
+    top: 205px;
+    background: #242b38;
+    border: 4px solid #111827;
+    border-radius: 5px;
+}
+
+.leg.left {
+    left: 8px;
+}
+
+.leg.right {
+    right: 8px;
+}
+
+/* HAT */
+
+.accessory-hat {
+    position: absolute;
+    display: none;
+    z-index: 5;
+}
+
+.hat-black {
+    width: 120px;
+    height: 30px;
+    left: 5px;
+    top: -22px;
+    background: #171717;
+    border-radius: 10px 10px 3px 3px;
+    box-shadow: 0 7px 0 #090909;
+}
+
+.hat-crown {
+    width: 70px;
+    height: 45px;
+    left: 25px;
+    top: -52px;
+    background: #171717;
+    border-radius: 8px 8px 0 0;
+}
+
+.hat-blue {
+    width: 125px;
+    height: 35px;
+    left: 2px;
+    top: -25px;
+    background: #00a8ff;
+    border-radius: 15px 15px 4px 4px;
+    box-shadow: 0 6px 0 #0075b5;
+}
+
+.hat-blue::after {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 15px;
+    background: #0088cc;
+    bottom: -8px;
+    left: 55px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* WINGS */
+
+.wings {
+    display: none;
+    position: absolute;
+    top: 105px;
+    left: -100px;
+    width: 330px;
+    height: 120px;
+    z-index: -1;
+}
+
+.wing {
+    position: absolute;
+    width: 140px;
+    height: 95px;
+    background: linear-gradient(135deg, #00a8ff, #244bff);
+    border: 3px solid #111827;
+    clip-path: polygon(100% 50%, 0 0, 25% 50%, 0 100%);
+}
+
+.wing.left {
+    left: 0;
+    transform: rotate(-8deg);
+}
+
+.wing.right {
+    right: 0;
+    transform: scaleX(-1) rotate(-8deg);
+}
+
+/* CONTROLS */
+
+.viewer-info {
+    text-align: center;
+    color: #888;
+    margin: 12px 0;
+}
+
+.viewer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.viewer-actions button {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buy {
+    background: #00a8ff;
+    color: white;
+}
+
+.cancel {
+    background: #202938;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #555;
+}
+
+@media(max-width:600px) {
+    .hero h1 {
+        font-size: 32px;
     }
 
-    .header-right {
-        justify-content: center;
-    }
-
-    .developer {
-        display: none;
-    }
-
-    .cards,
-    .shop-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        min-height: 600px;
-    }
-
-    h1 {
-        letter-spacing: -3px;
+    .scene {
+        height: 360px;
     }
 }
 </style>
@@ -548,1917 +460,322 @@ footer span {
 
 <body>
 
-<div class="background"></div>
-<div class="snow" id="snow"></div>
-
-<!-- NAVBAR -->
-
-<nav>
-
+<header class="header">
     <div class="logo">
-
-        <div class="logo-icon">
-            NX
-        </div>
-
-        <div class="logo-text">
-            NEXIUM <span>VISUALS</span>
-        </div>
-
+        NEXIUM
+        <small>VISUALS</small>
     </div>
 
-    <div class="header-right">
-
-        <div class="developer">
-            Разработчик:
-            <span>xuypisuzopa</span>
-        </div>
-
-        <div class="balance">
-            💰 <span id="balance">0</span> NEX
-        </div>
-
-        <div class="nav-buttons">
-
-            <button id="visualsBtn">
-                🎨 Визуалы
-            </button>
-
-            <button id="fpsBtn">
-                ⚡ FPS BOOST
-            </button>
-
-            <button id="shopBtn">
-                🛍️ Магазин
-            </button>
-
-            <button id="rewardNavBtn">
-                🎁 Награда
-            </button>
-
-        </div>
-
+    <div class="balance">
+        💰 <span id="balance">0</span>
     </div>
+</header>
 
-</nav>
-
-
-<!-- HERO -->
+<div class="container">
 
 <section class="hero">
+    <h1>NEXIUM Visuals</h1>
+    <p>Твой визуал. Твой стиль. Твоя игра.</p>
 
-    <div class="hero-content">
-
-        <div class="badge">
-            ⚡ NEXIUM VISUALS • ULTRA
-        </div>
-
-        <h1>
-            PLAY<br>
-            <span>BETTER.</span>
-        </h1>
-
-        <p>
-            Современные визуалы для Minecraft.
-            Красивый интерфейс, оптимизация и
-            плавный PvP-геймплей.
-        </p>
-
-        <a
-            class="download"
-            href="NEXIUM.zip"
-            download="NEXIUM.zip"
-        >
-            ↓ &nbsp; СКАЧАТЬ NEXIUM
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- VISUALS -->
-
-<section class="section" id="features">
-
-    <div class="section-title">
-
-        <h2>
-            Почему <span>NEXIUM?</span>
-        </h2>
-
-        <p>
-            Всё необходимое для комфортной игры.
-        </p>
-
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="icon">⚡</div>
-
-            <h3>FPS BOOST</h3>
-
-            <p>
-                Оптимизация визуалов для
-                максимально плавной игры.
-            </p>
-
-        </div>
-
-        <div class="card">
-
-            <div class="icon">🎨</div>
-
-            <h3>ULTRA VISUALS</h3>
-
-            <p>
-                Красивые эффекты, PvP-анимации
-                и современный стиль.
-            </p>
-
-        </div>
-
-        <div class="card">
-
-            <div class="icon">🛡️</div>
-
-            <h3>LIGHTWEIGHT</h3>
-
-            <p>
-                Минимум лишней нагрузки —
-                максимум производительности.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FPS -->
-
-<section class="section" id="fps">
-
-    <div class="fps-box">
-
-        <div class="fps-number">
-            FPS+
-        </div>
-
-        <h2>
-            Больше плавности.
-        </h2>
-
-        <p>
-            NEXIUM создаётся с учётом слабых ПК
-            и ноутбуков.
-        </p>
-
-        <a
-            class="download"
-            href="NEXIUM.zip"
-            download="NEXIUM.zip"
-        >
-            ↓ СКАЧАТЬ
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- REWARD -->
-
-<section class="section" id="reward">
-
-    <div class="section-title">
-
-        <h2>
-            Ежедневная <span>награда</span>
-        </h2>
-
-        <p>
-            За каждый новый день получай NEX.
-        </p>
-
-    </div>
-
-    <div class="reward-box">
-
-        <div class="reward-icon">
-            🎁
-        </div>
-
-        <h3>
-            +2 NEX каждый день
-        </h3>
-
-        <p id="rewardText">
-            Твоя ежедневная награда готова!
-        </p>
-
-        <div class="timer">
-
-            <div class="timer-title">
-                Следующая награда через
-            </div>
-
-            <div id="timer">
-                ГОТОВО!
-            </div>
-
-        </div>
-
-        <button
-            class="reward-btn"
-            id="rewardBtn"
-        >
-            🎁 ПОЛУЧИТЬ +2 NEX
+    <div class="buttons">
+        <button class="main-btn" onclick="alert('Одиночный режим скоро будет подключён!')">
+            🎮 Одиночество
         </button>
 
+        <button class="main-btn" onclick="alert('Серверный режим скоро будет подключён!')">
+            👥 Друзья
+        </button>
     </div>
-
 </section>
 
-
-<!-- SHOP -->
-
-<section class="shop" id="shop">
-
-    <div class="shop-title">
-
-        <h2>
-            NEXIUM <span>SHOP</span>
-        </h2>
-
-        <p>
-            Покупай костюмы за заработанные NEX.
-        </p>
-
-    </div>
-
-    <div class="shop-balance">
-
-        Твой баланс:
-
-        <strong>
-            💰 <span id="shopBalance">0</span> NEX
-        </strong>
-
-    </div>
-
-    <div class="shop-grid">
-
-        <div class="item">
-
-            <div class="costume">
-                🥷
-            </div>
-
-            <h3>
-                NEX Shadow
-            </h3>
-
-            <p>
-                Тёмный костюм ниндзя.
-            </p>
-
-            <div class="price">
-                💰 5 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="item1"
-                data-price="5"
-                data-name="NEX Shadow"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-
-        <div class="item">
-
-            <div class="costume">
-                ⚡
-            </div>
-
-            <h3>
-                NEX Lightning
-            </h3>
-
-            <p>
-                Электрический костюм.
-            </p>
-
-            <div class="price">
-                💰 10 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="item2"
-                data-price="10"
-                data-name="NEX Lightning"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-
-        <div class="item">
-
-            <div class="costume">
-                👑
-            </div>
-
-            <h3>
-                NEX King
-            </h3>
-
-            <p>
-                Королевский костюм NEXIUM.
-            </p>
-
-            <div class="price">
-                💰 20 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="item3"
-                data-price="20"
-                data-name="NEX King"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-    </div>
-
+<section class="reward">
+    <h2>🎁 Награда за день</h2>
+    <p>За сыгранный день ты получаешь <b>2 NEX</b>.</p>
+    <button id="rewardButton" onclick="getReward()">
+        Получить 2 NEX
+    </button>
 </section>
 
+<h2 class="section-title">🛍️ Магазин</h2>
+
+<div class="shop">
+
+    <div class="item">
+        <div class="item-preview">🧥</div>
+        <h3>Blue Outfit</h3>
+        <div class="price">20 NEX</div>
+        <button onclick="previewItem('Blue Outfit', 20, 'outfit')">
+            👀 Посмотреть
+        </button>
+    </div>
+
+    <div class="item">
+        <div class="item-preview">🪽</div>
+        <h3>NEXIUM Wings</h3>
+        <div class="price">35 NEX</div>
+        <button onclick="previewItem('NEXIUM Wings', 35, 'wings')">
+            👀 Посмотреть
+        </button>
+    </div>
+
+    <div class="item">
+        <div class="item-preview">🧢</div>
+        <h3>Blue Cap</h3>
+        <div class="price">15 NEX</div>
+        <button onclick="previewItem('Blue Cap', 15, 'bluehat')">
+            👀 Посмотреть
+        </button>
+    </div>
+
+    <div class="item">
+        <div class="item-preview">🎩</div>
+        <h3>Shadow Hat</h3>
+        <div class="price">25 NEX</div>
+        <button onclick="previewItem('Shadow Hat', 25, 'blackhat')">
+            👀 Посмотреть
+        </button>
+    </div>
+
+</div>
+
+</div>
 
 <footer>
-
-    © 2026
-    <span>NEXIUM Visuals</span>
-    • Built for Minecraft
-
+    NEXIUM Visuals © 2026
 </footer>
 
+<!-- 3D VIEWER -->
+
+<div class="viewer" id="viewer">
+
+    <div class="viewer-box">
+
+        <div class="viewer-top">
+            <h2 id="viewerTitle">Предмет</h2>
+            <button class="close" onclick="closeViewer()">×</button>
+        </div>
+
+        <div class="scene" id="scene">
+
+            <div class="character" id="character">
+
+                <div class="wings" id="wings">
+                    <div class="wing left"></div>
+                    <div class="wing right"></div>
+                </div>
+
+                <div class="accessory-hat hat-black" id="blackHat"></div>
+                <div class="accessory-hat hat-crown" id="blackHatCrown"></div>
+
+                <div class="accessory-hat hat-blue" id="blueHat"></div>
+
+                <div class="hair"></div>
+                <div class="head"></div>
+
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+
+                <div class="body" id="body"></div>
+
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+
+            </div>
+
+        </div>
+
+        <div class="viewer-info">
+            🖱️ Зажми мышь и вращай персонажа<br>
+            📱 На телефоне можно вращать пальцем
+        </div>
+
+        <div class="viewer-actions">
+
+            <button class="cancel" onclick="closeViewer()">
+                ❌ Не покупать
+            </button>
+
+            <button class="buy" id="buyButton">
+                💰 Купить
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script>
 
-/* ==============================
-   NEXIUM SYSTEM
-============================== */
+let balance = Number(localStorage.getItem("nexiumBalance")) || 0;
 
-let balance = Number(
-    localStorage.getItem("nexiumBalance")
-) || 0;
+let lastReward = localStorage.getItem("nexiumLastReward") || "";
 
-let rewardTime = Number(
-    localStorage.getItem("nexiumRewardTime")
-) || 0;
+let currentItem = null;
 
-let ownedItems = JSON.parse(
-    localStorage.getItem("nexiumOwnedItems") || "[]"
-);
-
-
-/* ==============================
-   БАЛАНС
-============================== */
+const balanceElement = document.getElementById("balance");
+const rewardButton = document.getElementById("rewardButton");
 
 function updateBalance() {
-
-    document.getElementById("balance").textContent = balance;
-
-    document.getElementById("shopBalance").textContent = balance;
-
-    localStorage.setItem(
-        "nexiumBalance",
-        balance
-    );
+    balanceElement.textContent = balance;
+    localStorage.setItem("nexiumBalance", balance);
 }
 
+function today() {
+    return new Date().toISOString().split("T")[0];
+}
 
-/* ==============================
-   НАГРАДА
-============================== */
+function updateRewardButton() {
 
-function claimReward() {
+    if (lastReward === today()) {
+        rewardButton.disabled = true;
+        rewardButton.textContent = "✅ Награда уже получена";
+    } else {
+        rewardButton.disabled = false;
+        rewardButton.textContent = "Получить 2 NEX";
+    }
+}
 
-    const now = Date.now();
+function getReward() {
 
-    if (rewardTime > now) {
+    if (lastReward === today()) {
         return;
     }
 
     balance += 2;
 
-    rewardTime =
-        now + (24 * 60 * 60 * 1000);
+    lastReward = today();
 
-    localStorage.setItem(
-        "nexiumRewardTime",
-        rewardTime
-    );
+    localStorage.setItem("nexiumLastReward", lastReward);
 
     updateBalance();
+    updateRewardButton();
 
-    updateReward();
-
+    alert("🎉 Ты получил 2 NEX!");
 }
 
+function previewItem(name, price, type) {
 
-/* ==============================
-   ТАЙМЕР
-============================== */
+    currentItem = {
+        name: name,
+        price: price,
+        type: type
+    };
 
-function updateReward() {
+    document.getElementById("viewerTitle").textContent =
+        name + " — " + price + " NEX";
 
-    const timer =
-        document.getElementById("timer");
+    resetAccessories();
 
-    const button =
-        document.getElementById("rewardBtn");
-
-    const text =
-        document.getElementById("rewardText");
-
-    const now = Date.now();
-
-
-    if (rewardTime <= now) {
-
-        timer.textContent = "ГОТОВО!";
-
-        button.disabled = false;
-
-        button.classList.remove("disabled");
-
-        button.textContent =
-            "🎁 ПОЛУЧИТЬ +2 NEX";
-
-        text.textContent =
-            "Твоя ежедневная награда готова!";
-
-        return;
+    if (type === "wings") {
+        document.getElementById("wings").style.display = "block";
     }
 
+    if (type === "bluehat") {
+        document.getElementById("blueHat").style.display = "block";
+    }
 
-    button.disabled = true;
+    if (type === "blackhat") {
+        document.getElementById("blackHat").style.display = "block";
+        document.getElementById("blackHatCrown").style.display = "block";
+    }
 
-    button.classList.add("disabled");
+    if (type === "outfit") {
+        document.getElementById("body").style.background =
+            "linear-gradient(135deg,#00a8ff,#004cff)";
+    }
 
-    button.textContent =
-        "⏳ НАГРАДА ПОЛУЧЕНА";
+    document.getElementById("buyButton").textContent =
+        "💰 Купить за " + price + " NEX";
 
-
-    text.textContent =
-        "Возвращайся после окончания таймера.";
-
-
-    let difference =
-        rewardTime - now;
-
-
-    let hours =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60)
-        );
-
-
-    let minutes =
-        Math.floor(
-            (difference %
-            (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    let seconds =
-        Math.floor(
-            (difference %
-            (1000 * 60)) /
-            1000
-        );
-
-
-    timer.textContent =
-        String(hours).padStart(2,"0") +
-        ":" +
-        String(minutes).padStart(2,"0") +
-        ":" +
-        String(seconds).padStart(2,"0");
+    document.getElementById("viewer").style.display = "flex";
 }
 
+function resetAccessories() {
 
-/* ==============================
-   МАГАЗИН
-============================== */
+    document.getElementById("wings").style.display = "none";
+    document.getElementById("blueHat").style.display = "none";
+    document.getElementById("blackHat").style.display = "none";
+    document.getElementById("blackHatCrown").style.display = "none";
 
-function buyItem(id, price, name) {
+    document.getElementById("body").style.background = "#00a8ff";
+}
 
-    if (ownedItems.includes(id)) {
-        return;
-    }
+function closeViewer() {
+    document.getElementById("viewer").style.display = "none";
+    currentItem = null;
+}
 
+document.getElementById("buyButton").onclick = function() {
 
-    if (balance < price) {
+    if (!currentItem) return;
+
+    if (balance < currentItem.price) {
 
         alert(
             "❌ Недостаточно NEX!\n\n" +
-            "Цена: " + price + " NEX\n" +
-            "Баланс: " + balance + " NEX"
+            "Нужно: " + currentItem.price +
+            "\nУ тебя: " + balance
         );
 
         return;
     }
 
-
-    balance -= price;
-
-    ownedItems.push(id);
-
-
-    localStorage.setItem(
-        "nexiumOwnedItems",
-        JSON.stringify(ownedItems)
-    );
-
+    balance -= currentItem.price;
 
     updateBalance();
-
-    updateShop();
-
 
     alert(
-        "🔥 Покупка успешна!\n\n" +
-        "Ты купил " + name + "!"
-    );
-}
-
-
-/* ==============================
-   ОБНОВЛЕНИЕ SHOP
-============================== */
-
-function updateShop() {
-
-    document
-        .querySelectorAll(".buy-btn")
-        .forEach(function(button) {
-
-            const id =
-                button.dataset.id;
-
-            if (
-                ownedItems.includes(id)
-            ) {
-
-                button.textContent =
-                    "КУПЛЕНО ✓";
-
-                button.classList.add(
-                    "owned"
-                );
-
-                button.disabled = true;
-            }
-
-        });
-}
-
-
-/* ==============================
-   НАВИГАЦИЯ
-============================== */
-
-function goTo(id) {
-
-    const element =
-        document.getElementById(id);
-
-    if (!element) return;
-
-    element.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-}
-
-
-/* ==============================
-   КНОПКИ НАВИГАЦИИ
-============================== */
-
-document
-    .getElementById("visualsBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo("features");
-        }
+        "🎉 Покупка успешна!\n\n" +
+        "Ты купил: " + currentItem.name
     );
 
+    closeViewer();
+};
 
-document
-    .getElementById("fpsBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo("fps");
-        }
-    );
+/* 3D ROTATION */
 
+const scene = document.getElementById("scene");
+const character = document.getElementById("character");
 
-document
-    .getElementById("shopBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo("shop");
-        }
-    );
+let rotating = false;
+let lastX = 0;
+let rotationY = 0;
 
+scene.addEventListener("pointerdown", function(e) {
 
-document
-    .getElementById("rewardNavBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo("reward");
-        }
-    );
+    rotating = true;
+    lastX = e.clientX;
 
+    scene.setPointerCapture(e.pointerId);
+});
 
-/* ==============================
-   КНОПКА НАГРАДЫ
-============================== */
+scene.addEventListener("pointermove", function(e) {
 
-document
-    .getElementById("rewardBtn")
-    .addEventListener(
-        "click",
-        claimReward
-    );
+    if (!rotating) return;
 
+    let difference = e.clientX - lastX;
 
-/* ==============================
-   КНОПКИ ПОКУПКИ
-============================== */
+    rotationY += difference * 0.8;
 
-document
-    .querySelectorAll(".buy-btn")
-    .forEach(function(button) {
+    character.style.transform =
+        "rotateY(" + rotationY + "deg)";
 
-        butto
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    lastX = e.clientX;
+});
 
-<title>NEXIUM Visuals</title>
+scene.addEventListener("pointerup", function() {
+    rotating = false;
+});
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+scene.addEventListener("pointercancel", function() {
+    rotating = false;
+});
 
-html {
-    scroll-behavior: smooth;
-}
+updateBalance();
+updateRewardButton();
 
-body {
-    background: #03060d;
-    color: white;
-    overflow-x: hidden;
-}
+</script>
 
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(0,168,255,0.18), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(0,100,255,0.08), transparent 30%),
-        #03060d;
-}
-
-/* СНЕГ */
-
-.snow {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
-}
-
-.snow span {
-    position: absolute;
-    top: -20px;
-    background: white;
-    border-radius: 50%;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-
-/* NAVBAR */
-
-nav {
-    min-height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 12px 7%;
-    background: rgba(3,6,13,0.85);
-    border-bottom: 1px solid rgba(0,168,255,0.15);
-    backdrop-filter: blur(12px);
-    position: relative;
-    z-index: 100;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-icon {
-    width: 42px;
-    height: 42px;
-    border: 2px solid #00a8ff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00a8ff;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 0 20px rgba(0,168,255,0.35);
-}
-
-.logo-text {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.logo-text span {
-    color: #00a8ff;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.developer {
-    color: #738197;
-    font-size: 12px;
-    padding: 8px 12px;
-    border: 1px solid rgba(0,168,255,0.18);
-    border-radius: 9px;
-}
-
-.developer span {
-    color: #00a8ff;
-    font-weight: bold;
-}
-
-.balance {
-    padding: 10px 15px;
-    border: 1px solid rgba(0,168,255,0.35);
-    border-radius: 10px;
-    background: rgba(0,168,255,0.08);
-    color: #00a8ff;
-    font-weight: bold;
-}
-
-/* КНОПКИ */
-
-.nav-buttons {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-}
-
-.nav-buttons button {
-    padding: 10px 13px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: #aeb8c8;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-buttons button:hover {
-    color: white;
-    background: rgba(0,168,255,0.1);
-    border-color: rgba(0,168,255,0.35);
-    transform: translateY(-2px);
-}
-
-.nav-buttons button:active {
-    transform: scale(0.94);
-}
-
-/* HERO */
-
-.hero {
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero-content {
-    max-width: 850px;
-}
-
-.badge {
-    display: inline-block;
-    padding: 9px 17px;
-    border: 1px solid rgba(0,168,255,0.4);
-    border-radius: 30px;
-    color: #00a8ff;
-    background: rgba(0,168,255,0.07);
-    font-size: 13px;
-    margin-bottom: 25px;
-}
-
-h1 {
-    font-size: clamp(55px, 10vw, 105px);
-    line-height: 0.9;
-    letter-spacing: -5px;
-}
-
-h1 span {
-    color: #00a8ff;
-    text-shadow: 0 0 35px rgba(0,168,255,0.45);
-}
-
-.hero p {
-    margin: 30px auto;
-    max-width: 600px;
-    color: #8e9aac;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* DOWNLOAD */
-
-.download {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 17px 35px;
-    border: none;
-    border-radius: 13px;
-    background: #00a8ff;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 0 30px rgba(0,168,255,0.3);
-    transition: 0.25s;
-}
-
-.download:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 0 45px rgba(0,168,255,0.55);
-}
-
-.download:active {
-    transform: scale(0.95);
-}
-
-/* SECTIONS */
-
-.section,
-.shop {
-    padding: 80px 7%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.section-title,
-.shop-title {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.section-title h2,
-.shop-title h2 {
-    font-size: 38px;
-}
-
-.section-title span,
-.shop-title span {
-    color: #00a8ff;
-}
-
-.section-title p,
-.shop-title p {
-    margin-top: 12px;
-    color: #788497;
-}
-
-/* CARDS */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.card {
-    padding: 30px;
-    min-height: 190px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.07);
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.055),
-        rgba(255,255,255,0.015)
-    );
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    border-color: rgba(0,168,255,0.4);
-    box-shadow: 0 15px 40px rgba(0,168,255,0.08);
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,168,255,0.1);
-    color: #00a8ff;
-    font-size: 23px;
-    margin-bottom: 20px;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.card p {
-    color: #7e899b;
-    line-height: 1.5;
-}
-
-/* FPS */
-
-.fps-box {
-    text-align: center;
-    padding: 60px 30px;
-    border: 1px solid rgba(0,168,255,0.2);
-    border-radius: 25px;
-    background:
-        radial-gradient(circle at center, rgba(0,168,255,0.12), transparent 60%),
-        rgba(255,255,255,0.02);
-}
-
-.fps-number {
-    font-size: 70px;
-    font-weight: bold;
-    color: #00a8ff;
-    text-shadow: 0 0 30px rgba(0,168,255,0.4);
-}
-
-.fps-box p {
-    color: #8793a6;
-    margin: 10px 0 25px;
-}
-
-/* REWARD */
-
-.reward-box {
-    max-width: 800px;
-    margin: auto;
-    padding: 40px;
-    text-align: center;
-    border-radius: 22px;
-    border: 1px solid rgba(0,168,255,0.25);
-    background: rgba(0,168,255,0.04);
-}
-
-.reward-icon {
-    font-size: 55px;
-    margin-bottom: 15px;
-}
-
-.reward-box h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.reward-box p {
-    color: #8490a3;
-    margin-bottom: 20px;
-}
-
-.timer {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(0,168,255,0.15);
-}
-
-.timer-title {
-    color: #788497;
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-#timer {
-    color: #00a8ff;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.reward-btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
-    background: #00a8ff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.reward-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-}
-
-.reward-btn:active {
-    transform: scale(0.94);
-}
-
-.reward-btn.disabled {
-    background: #202936;
-    color: #687486;
-    cursor: not-allowed;
-}
-
-/* SHOP */
-
-.shop-balance {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #8793a6;
-}
-
-.shop-balance strong {
-    color: #00a8ff;
-    font-size: 22px;
-}
-
-.shop-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.item {
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.06),
-        rgba(255,255,255,0.015)
-    );
-    text-align: center;
-    transition: 0.3s;
-}
-
-.item:hover {
-    transform: translateY(-7px);
-    border-color: rgba(0,168,255,0.45);
-}
-
-.costume {
-    height: 150px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 70px;
-    margin-bottom: 20px;
-    background:
-        radial-gradient(circle, rgba(0,168,255,0.18), transparent 65%),
-        rgba(0,168,255,0.05);
-}
-
-.item h3 {
-    margin-bottom: 8px;
-}
-
-.item p {
-    color: #7e899b;
-    margin-bottom: 18px;
-}
-
-.price {
-    color: #00a8ff;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.buy-btn {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(0,168,255,0.35);
-    border-radius: 10px;
-    background: rgba(0,168,255,0.08);
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.buy-btn:hover {
-    background: #00a8ff;
-}
-
-.buy-btn:active {
-    transform: scale(0.95);
-}
-
-.buy-btn.owned {
-    background: rgba(0,255,140,0.1);
-    border-color: rgba(0,255,140,0.3);
-    color: #00ff8c;
-    cursor: default;
-}
-
-/* FOOTER */
-
-footer {
-    margin-top: 70px;
-    padding: 30px;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    color: #596579;
-}
-
-footer span {
-    color: #00a8ff;
-}
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-    nav {
-        padding: 12px 20px;
-        justify-content: center;
-    }
-
-    .header-right {
-        justify-content: center;
-    }
-
-    .developer {
-        display: none;
-    }
-
-    .cards,
-    .shop-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        min-height: 600px;
-    }
-
-    h1 {
-        letter-spacing: -3px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="background"></div>
-<div class="snow" id="snow"></div>
-
-
-<!-- NAVBAR -->
-
-<nav>
-
-    <div class="logo">
-
-        <div class="logo-icon">
-            NX
-        </div>
-
-        <div class="logo-text">
-            NEXIUM <span>VISUALS</span>
-        </div>
-
-    </div>
-
-
-    <div class="header-right">
-
-        <div class="developer">
-            Разработчик:
-            <span>xuypisuzopa</span>
-        </div>
-
-        <div class="balance">
-            💰 <span id="balance">0</span> NEX
-        </div>
-
-        <div class="nav-buttons">
-
-            <button id="visualsBtn">
-                🎨 Визуалы
-            </button>
-
-            <button id="fpsBtn">
-                ⚡ FPS BOOST
-            </button>
-
-            <button id="shopBtn">
-                🛍️ Магазин
-            </button>
-
-            <button id="rewardNavBtn">
-                🎁 Награда
-            </button>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <div class="badge">
-            ⚡ NEXIUM VISUALS • ULTRA
-        </div>
-
-        <h1>
-            PLAY<br>
-            <span>BETTER.</span>
-        </h1>
-
-        <p>
-            Современные визуалы для Minecraft.
-            Красивый интерфейс, оптимизация и
-            плавный PvP-геймплей.
-        </p>
-
-        <a
-            class="download"
-            href="./NEXIUM.zip"
-            download
-        >
-            ↓ &nbsp; СКАЧАТЬ NEXIUM
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- VISUALS -->
-
-<section class="section" id="features">
-
-    <div class="section-title">
-
-        <h2>
-            Почему <span>NEXIUM?</span>
-        </h2>
-
-        <p>
-            Всё необходимое для комфортной игры.
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="icon">
-                ⚡
-            </div>
-
-            <h3>
-                FPS BOOST
-            </h3>
-
-            <p>
-                Оптимизация визуалов для
-                максимально плавной игры.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🎨
-            </div>
-
-            <h3>
-                ULTRA VISUALS
-            </h3>
-
-            <p>
-                Красивые эффекты, PvP-анимации
-                и современный стиль.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🛡️
-            </div>
-
-            <h3>
-                LIGHTWEIGHT
-            </h3>
-
-            <p>
-                Минимум лишней нагрузки —
-                максимум производительности.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FPS -->
-
-<section class="section" id="fps">
-
-    <div class="fps-box">
-
-        <div class="fps-number">
-            FPS+
-        </div>
-
-        <h2>
-            Больше плавности.
-        </h2>
-
-        <p>
-            NEXIUM создаётся с учётом слабых ПК
-            и ноутбуков.
-        </p>
-
-        <a
-            class="download"
-            href="./NEXIUM.zip"
-            download
-        >
-            ↓ СКАЧАТЬ
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- REWARD -->
-
-<section class="section" id="reward">
-
-    <div class="section-title">
-
-        <h2>
-            Ежедневная <span>награда</span>
-        </h2>
-
-        <p>
-            За каждый новый день получай NEX.
-        </p>
-
-    </div>
-
-
-    <div class="reward-box">
-
-        <div class="reward-icon">
-            🎁
-        </div>
-
-        <h3>
-            +2 NEX каждый день
-        </h3>
-
-        <p id="rewardText">
-            Твоя ежедневная награда готова!
-        </p>
-
-
-        <div class="timer">
-
-            <div class="timer-title">
-                Следующая награда через
-            </div>
-
-            <div id="timer">
-                ГОТОВО!
-            </div>
-
-        </div>
-
-
-        <button
-            class="reward-btn"
-            id="rewardBtn"
-        >
-            🎁 ПОЛУЧИТЬ +2 NEX
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- SHOP -->
-
-<section class="shop" id="shop">
-
-    <div class="shop-title">
-
-        <h2>
-            NEXIUM <span>SHOP</span>
-        </h2>
-
-        <p>
-            Покупай костюмы за заработанные NEX.
-        </p>
-
-    </div>
-
-
-    <div class="shop-balance">
-
-        Твой баланс:
-
-        <strong>
-            💰 <span id="shopBalance">0</span> NEX
-        </strong>
-
-    </div>
-
-
-    <div class="shop-grid">
-
-
-        <div class="item">
-
-            <div class="costume">
-                🥷
-            </div>
-
-            <h3>
-                NEX Shadow
-            </h3>
-
-            <p>
-                Тёмный костюм ниндзя.
-            </p>
-
-            <div class="price">
-                💰 5 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="shadow"
-                data-price="5"
-                data-name="NEX Shadow"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-
-        <div class="item">
-
-            <div class="costume">
-                ⚡
-            </div>
-
-            <h3>
-                NEX Lightning
-            </h3>
-
-            <p>
-                Электрический костюм.
-            </p>
-
-            <div class="price">
-                💰 10 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="lightning"
-                data-price="10"
-                data-name="NEX Lightning"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-
-        <div class="item">
-
-            <div class="costume">
-                👑
-            </div>
-
-            <h3>
-                NEX King
-            </h3>
-
-            <p>
-                Королевский костюм.
-            </p>
-
-            <div class="price">
-                💰 20 NEX
-            </div>
-
-            <button
-                class="buy-btn"
-                data-id="king"
-                data-price="20"
-                data-name="NEX King"
-            >
-                КУПИТЬ
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    © 2026
-    <span>NEXIUM Visuals</span>
-    • Built for Minecraft
-
-</footer>
-
-
-<script>
-
-/* ================================
-   NEXIUM BALANCE
-================================ */
-
-let balance =
-    Number(localStorage.getItem("nexiumBalance")) || 0;
-
-
-/* ================================
-   REWARD TIMER
-================================ */
-
-let rewardTime =
-    Number(localStorage.getItem("nexiumRewardTime")) || 0;
-
-
-/* ================================
-   OWNED ITEMS
-================================ */
-
-let ownedItems =
-    JSON.parse(
-        localStorage.getItem("nexiumOwnedItems") || "[]"
-    );
-
-
-/* ================================
-   UPDATE BALANCE
-================================ */
-
-function updateBalance() {
-
-    document.getElementById("balance").textContent =
-        balance;
-
-    document.getElementById("shopBalance").textContent =
-        balance;
-
-    localStorage.setItem(
-        "nexiumBalance",
-        balance
-    );
-}
-
-
-/* ================================
-   CLAIM REWARD
-================================ */
-
-function claimReward() {
-
-    const now = Date.now();
-
-    if (rewardTime > now) {
-        return;
-    }
-
-    balance += 2;
-
-    rewardTime =
-        now + 24 * 60 * 60 * 1000;
-
-    localStorage.setItem(
-        "nexiumRewardTime",
-        rewardTime
-    );
-
-    updateBalance();
-    updateReward();
-
-}
-
-
-/* ================================
-   UPDATE REWARD
-================================ */
-
-function updateReward() {
-
-    const timer =
-        document.getElementById("timer");
-
-    const button =
-        document.getElementById("rewardBtn");
-
-    const text =
-        document.getElementById("rewardText");
-
-    const now = Date.now();
-
-
-    if (rewardTime <= now) {
-
-        timer.textContent =
-            "ГОТОВО!";
-
-        button.disabled =
-            false;
-
-        button.classList.remove(
-            "disabled"
-        );
-
-        button.textContent =
-            "🎁 ПОЛУЧИТЬ +2 NEX";
-
-        text.textContent =
-            "Твоя ежедневная награда готова!";
-
-        return;
-    }
-
-
-    button.disabled =
-        true;
-
-    button.classList.add(
-        "disabled"
-    );
-
-    button.textContent =
-        "⏳ НАГРАДА ПОЛУЧЕНА";
-
-
-    const difference =
-        rewardTime - now;
-
-
-    const hours =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (difference %
-            (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (difference %
-            (1000 * 60)) /
-            1000
-        );
-
-
-    timer.textContent =
-        String(hours).padStart(2,"0") +
-        ":" +
-        String(minutes).padStart(2,"0") +
-        ":" +
-        String(seconds).padStart(2,"0");
-
-}
-
-
-/* ================================
-   SHOP
-================================ */
-
-function buyItem(
-    id,
-    price,
-    name
-) {
-
-    if (ownedItems.includes(id)) {
-        return;
-    }
-
-
-    if (balance < price) {
-
-        alert(
-            "❌ Недостаточно NEX!\n\n" +
-            "Цена: " + price + " NEX\n" +
-            "Твой баланс: " + balance + " NEX"
-        );
-
-        return;
-    }
-
-
-    balance -= price;
-
-    ownedItems.push(id);
-
-
-    localStorage.setItem(
-        "nexiumOwnedItems",
-        JSON.stringify(ownedItems)
-    );
-
-
-    updateBalance();
-    updateShop();
-
-
-    alert(
-        "🔥 Покупка успешна!\n\n" +
-        "Ты купил: " + name
-    );
-
-}
-
-
-/* ================================
-   UPDATE SHOP
-================================ */
-
-function updateShop() {
-
-    document
-        .querySelectorAll(".buy-btn")
-        .forEach(function(button) {
-
-            const id =
-                button.dataset.id;
-
-
-            if (
-                ownedItems.includes(id)
-            ) {
-
-                button.textContent =
-                    "КУПЛЕНО ✓";
-
-                button.classList.add(
-                    "owned"
-                );
-
-                button.disabled =
-                    true;
-
-            }
-
-        });
-
-}
-
-
-/* ================================
-   NAVIGATION
-================================ */
-
-function goTo(id) {
-
-    const element =
-        document.getElementById(id);
-
-    if (!element) {
-        return;
-    }
-
-    element.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-}
-
-
-/* ================================
-   NAV BUTTONS
-================================ */
-
-document
-    .getElementById("visualsBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo("features");
-        }
-    );
-
-
-document
-    .getElementById("fpsBtn")
-    .addEventListener(
-        "click",
-        function() {
-            goTo
+</body>
+</html>
